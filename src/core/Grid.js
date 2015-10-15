@@ -242,4 +242,17 @@ Grid.prototype.clone = function() {
     return newGrid;
 };
 
+/**
+ * make the grid reusable for another pathfinding
+ */
+Grid.prototype.clean = function() {
+	var i, j;
+	
+    for (i = 0; i < this.height; ++i) {
+        for (j = 0; j < this.width; ++j) {
+            this.nodes[i][j].clean();
+        }
+    }
+};
+
 module.exports = Grid;

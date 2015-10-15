@@ -20,6 +20,9 @@ function pathTest(opt) {
             return function(startX, startY, endX, endY, grid, expectedLength) {
                 it('should solve maze '+ ++testId, function() {
                     path = finder.findPath(startX, startY, endX, endY, grid);
+					// test clean grid
+					grid.clean();
+                    path = finder.findPath(startX, startY, endX, endY, grid);
                     if (optimal) {
                         path.length.should.equal(expectedLength);
                     } else {

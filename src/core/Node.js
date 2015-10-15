@@ -23,6 +23,21 @@ function Node(x, y, walkable) {
      * @type boolean
      */
     this.walkable = (walkable === undefined ? true : walkable);
+
+	/**
+	 * key of not used Node
+	 * @type {Array<string>}
+	 */
+	this.virginKeys = ["x","y","walkable","virginKeys"];
+}
+
+Node.prototype.clean = function() {
+	var key;
+	for (key in this) {
+		if (this.virginKeys.indexOf(key) === -1) {
+			this[key] = undefined;
+		}
+	};
 }
 
 module.exports = Node;
